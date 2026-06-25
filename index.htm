@@ -5,123 +5,216 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="เว็บไซต์แสดงผลงานและความสนใจในศิลปะของ PATTARASAYA">
 <title>โลกศิลปะของ PATTARASAYA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.7;
-    margin: 0;
-    padding: 0;
-    background-color: #fff5f6;
-    color: #5a4b4c;
+/* กำหนดตัวแปรสีชมพูหวาน ๆ ไว้ใช้ */
+:root {
+    --pink-light: #fff0f3;
+    --pink-pastel: #ffccd5;
+    --pink-main: #ff85a2;
+    --pink-dark: #ff477e;
+    --pink-deep: #a32246;
+    --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+    --card-shadow: 0 10px 30px rgba(255, 133, 162, 0.2);
 }
 
+body {
+    font-family: 'Mitr', 'Itim', sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: #4a373a;
+}
+
+/* Header แบบพาสเทลไล่เฉดสี อลังการวิบวับ */
 header {
-    background: #ffb7c5;
+    background: linear-gradient(45deg, #ff99b6, #ffb7c5, #ffa6c9);
+    background-size: 200% 200%;
+    animation: gradientBG 6s ease infinite;
     color: white;
-    padding: 40px 0;
+    padding: 60px 20px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(255, 183, 197, 0.3);
+    border-bottom: 5px dashed #ffffff;
+    box-shadow: 0 4px 15px rgba(214, 75, 102, 0.2);
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 3rem;
+    font-family: 'Itim', cursive;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px var(--pink-dark), 5px 5px 15px rgba(0,0,0,0.15);
 }
 
 header p {
-    margin: 10px 0 0;
-    font-size: 1.1rem;
-    opacity: 0.95;
+    margin: 15px 0 0;
+    font-size: 1.3rem;
+    font-weight: 300;
+    background: rgba(255, 255, 255, 0.25);
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
 }
 
+/* จัดการกรอบข้อความให้เป็นฟีล Glassmorphism ละมุน ๆ */
 section {
-    padding: 30px;
-    margin: 30px auto;
+    padding: 40px;
+    margin: 40px auto;
     max-width: 800px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(255, 183, 197, 0.15);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    border: 3px solid #ffffff;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
 }
 
 h2 {
-    color: #ff94a8;
-    border-bottom: 2px solid #ffe3e7;
-    padding-bottom: 8px;
+    color: var(--pink-dark);
+    font-size: 1.8rem;
+    border-bottom: 3px dotted var(--pink-pastel);
+    padding-bottom: 12px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+h2::before {
+    content: "💖";
+}
+
+/* การ์ดผลงานสุดคิ้วท์ */
 .project {
     margin-bottom: 25px;
-    padding: 15px;
-    background: #fffcfc;
-    border-left: 4px solid #ffccd5;
-    border-radius: 0 12px 12px 0;
+    padding: 20px;
+    background: linear-gradient(to right, #ffffff, #fff5f7);
+    border-left: 6px solid var(--pink-main);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(255, 133, 162, 0.05);
+    transition: all 0.3s ease;
+}
+
+.project:hover {
+    border-left-color: var(--pink-dark);
+    background: linear-gradient(to right, #fff5f7, #ffe5ec);
+    transform: translateX(8px);
 }
 
 .project h3 {
     margin: 0 0 10px;
-    color: #7d5a60;
+    color: var(--pink-deep);
+    font-size: 1.3rem;
 }
 
+/* รายการทักษะแบบหัวใจดุ๊กดิ๊ก */
 ul {
     list-style-type: none;
     padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
 }
 
 ul li {
-    margin-bottom: 10px;
-    padding-left: 20px;
+    background: #ffffff;
+    padding: 12px 15px 12px 40px;
+    border-radius: 15px;
     position: relative;
+    box-shadow: 0 2px 8px rgba(255, 133, 162, 0.08);
+    transition: all 0.2s;
 }
 
-ul li::before {
-    content: "♥"; 
-    position: absolute;
-    left: 0;
-    color: #ff94a8;
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background: #ffd0d8;
-    color: #6e4e53;
-    margin-top: 40px;
-    border-radius: 20px 20px 0 0;
-}
-
-footer a {
-    color: #d64b66;
-    text-decoration: none;
+ul li:hover {
+    background: var(--pink-light);
+    color: var(--pink-dark);
     font-weight: bold;
 }
 
+ul li::before {
+    content: "💗"; 
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s;
+}
+
+ul li:hover::before {
+    transform: translateY(-50%) scale(1.3);
+}
+
+/* Footer หวานกรุบ */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #ffccd5;
+    color: var(--pink-deep);
+    margin-top: 60px;
+    border-radius: 40px 40px 0 0;
+    border-top: 4px dashed #ffffff;
+}
+
+footer a {
+    color: #white;
+    background: var(--pink-dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 5px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(255, 71, 126, 0.3);
+}
+
 footer a:hover {
-    text-decoration: underline;
+    background: var(--pink-deep);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+#year {
+    font-weight: bold;
 }
 </style>
 </head>
 <body>
 
 <header>
-<h1>สวัสดี! ฉันคือ PATTARASAYA</h1>
-<p>ยินดีต้อนรับสู่พื้นที่แสดงความคิดสร้างสรรค์และผลงานศิลปะของฉัน</p>
+<h1>✨ สวัสดี! ฉันคือ PATTARASAYA ✨</h1>
+<p>ยินดีต้อนรับสู่พื้นที่แสดงความคิดสร้างสรรค์และผลงานศิลปะของฉัน 🎨</p>
 </header>
 
 <section id="about">
 <h2>เกี่ยวกับฉัน & ศิลปะ</h2>
-<p>ฉันเป็นคนที่มีความหลงใหลในศิลปะและการถ่ายทอดความรู้สึกผ่านลวดลาย สีสัน และลายเส้น ฉันสนุกกับการค้นหาสไตล์ใหม่ ๆ และพัฒนาทักษะด้านงานสร้างสรรค์อยู่เสมอ</p>
+<p>ฉันเป็นคนที่มีความหลงใหลในศิลปะและการถ่ายทอดความรู้สึกผ่านลวดลาย สีสัน และลายเส้น ฉันสนุกกับการค้นหาสไตล์ใหม่ ๆ และพัฒนาทักษะด้านงานสร้างสรรค์อยู่เสมอ สรรค์สร้างทุกอย่างด้วยใจรักเลยค่ะน้า~</p>
 </section>
 
 <section id="projects">
 <h2>ผลงานศิลปะของฉัน</h2>
 <div class="project">
-<h3>งานวาดภาพและภาพประกอบ (Illustration)</h3>
+<h3>🎨 งานวาดภาพและภาพประกอบ (Illustration)</h3>
 <p>รวบรวมภาพวาดที่ใช้เทคนิคต่าง ๆ ทั้งงานวาดมือ (Traditional Art) และงานดิจิทัล (Digital Art)</p>
 </div>
 <div class="project">
-<h3>การออกแบบงานสร้างสรรค์ (Creative Design)</h3>
+<h3>✨ การออกแบบงานสร้างสรรค์ (Creative Design)</h3>
 <p>ผลงานการออกแบบโปสเตอร์ โลโก้ และการจัดองค์ประกอบศิลป์ที่สะท้อนมุมมองเฉพาะตัว</p>
 </div>
 </section>
@@ -129,16 +222,16 @@ footer a:hover {
 <section id="skills">
 <h2>ทักษะด้านศิลปะของฉัน</h2>
 <ul>
-<li>การวาดภาพลายเส้นและการลงสี (Sketching & Coloring)</li>
-<li>ศิลปะดิจิทัล (Digital Painting / Procreate / Photoshop)</li>
-<li>การจับคู่สีและการจัดองค์ประกอบภาพ (Color Theory & Composition)</li>
-<li>ความคิดสร้างสรรค์และการออกแบบกราฟิกเบื้องต้น</li>
+<li>การวาดภาพลายเส้นและการลงสี</li>
+<li>ศิลปะดิจิทัล (Procreate / Photoshop)</li>
+<li>ทฤษฎีสีและการจัดองค์ประกอบภาพ</li>
+<li>ความคิดสร้างสรรค์และกราฟิกดีไซน์</li>
 </ul>
 </section>
 
 <footer>
-<p>พูดคุยเรื่องศิลปะหรือติดต่อฉันได้ที่: <a href="mailto:s34682@banbung.ac.th">s34682@banbung.ac.th</a></p>
-<p>&copy; <span id="year">2026</span> PATTARASAYA. All rights reserved. </p>
+<p>🎀 พูดคุยเรื่องศิลปะหรือติดต่อฉันได้ที่: <a href="mailto:s34682@banbung.ac.th">s34682@banbung.ac.th</a></p>
+<p>&copy; <span id="year">2026</span> PATTARASAYA. All rights reserved. 🧸</p>
 </footer>
 
 <script src="script.js"></script>
